@@ -8,7 +8,21 @@ export const Content = styled.div`
     width: 960px;
     right: 90px;
     top: 35px;
-    z-index: 2;
+    z-index: 4;
+
+    svg {
+        font-size: 30px;
+        position: absolute;
+        right: 25px;
+        z-index: 5;
+        top: 15px;
+        color: var(--tertiary);
+        display: none;
+
+        @media (max-width: 1300px) {
+            display: block;
+        }
+    }
 
     @media (max-width: 1300px) {
         display: none;
@@ -50,4 +64,24 @@ export const Item = styled.p`
         @media (max-width: 1300px) {
             margin-bottom: 25px;
         }
+`;
+
+export const MenuIcon = styled.p`
+    svg {
+        position: absolute;
+        z-index: 4;
+        top: 35px;
+        right: 90px;
+        font-size: 28px;
+        display: none;
+        color: var(--tertiary);
+
+        @media (max-width: 1300px) {
+            display: block;
+        }
+
+        @media (max-width: 1150px) {
+            color: var(--primary);
+        }
+    }
 `;
