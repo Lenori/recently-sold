@@ -82,6 +82,10 @@ export const MenuIcon = styled.p`
 
         @media (max-width: 1150px) {
             color: var(--primary);
+
+            ${props => props.alwaysWhite && css`        
+                color: var(--tertiary);
+            `} 
         }
     }
 `;

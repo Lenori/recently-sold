@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import 'react-rangeslider/lib/index.css'
 
 export const Content = styled.div`
@@ -10,9 +10,13 @@ export const Content = styled.div`
     min-height: 100vh;
     padding: 90px;
 
-    @media (max-width: 1150px) {
+    @media (max-width: 1400px) {
         flex-direction: column;
-        padding: 0 0 90px 0;
+        padding: 180px 90px 90px;
+    }
+
+    @media (max-width: 850px) {
+        padding: 180px 30px 90px;
     }
 `;
 
@@ -24,8 +28,42 @@ export const Half = styled.div`
     width: 50%;
     z-index: 1;   
 
-    @media (max-width: 1150px) {
+    ${props => props.fixed && css`        
+        min-width: 800px;
+
+        @media (max-width: 1400px) {
+            min-width: unset;
+            margin-bottom: 40px;
+        }
+    `} 
+
+    @media (max-width: 1400px) {
         width: 100%;
+    }
+`;
+
+export const DateInput = styled.section`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30px;
+
+    p {
+        color: white;
+        font-size: 20px;
+        margin-right: 10px;
+        user-select: none;
+    }
+
+    .date-input {
+        background-color: transparent;
+        border: none;
+        color: var(--tertiary);
+        font-size: 20px;
+        border-bottom: 2px solid var(--tertiary);
+        width: 110px;
+        text-align: center;
+        margin-right: 10px;
     }
 `;
 
@@ -42,11 +80,31 @@ export const Range = styled.section`
         user-select: none;
     }
 
+    section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-width: 630px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .rangeslider-horizontal {
-        width: 300px;
+        width: 250px;
         height: 1px;
         margin-top: 26px;
         margin-right: 10px;
+
+        @media (max-width: 630px) {
+            width: 420px;
+        }
     }
 
     .rangeslider-horizontal .rangeslider__fill {
@@ -92,6 +150,10 @@ export const Input = styled.input`
     &::placeholder {
         color: var(--tertiary);
     }
+
+    @media (max-width: 850px) {
+        width: 100%;
+    }
 `;
 
 export const Actions = styled.div`
@@ -102,7 +164,7 @@ export const Actions = styled.div`
     z-index: 1;
     margin-top: 90px;
 
-    @media (max-width: 1150px) {
+    @media (max-width: 1400px) {
         width: 90%;
         margin: 90px auto 0;
     }
@@ -110,5 +172,56 @@ export const Actions = styled.div`
     button {
         margin-left: 20px;
         font-size: 20px;
+    }
+`;
+
+export const SelectInput = styled.section`
+    width: 80%;
+    margin-top: 30px;
+
+    svg {
+        color: var(--tertiary);
+    }
+
+    .select-input {
+        background-color: transparent;
+        border: none;
+        color: var(--tertiary);
+        font-size: 20px;
+        border-bottom: 1px solid var(--tertiary);
+    }
+`;
+
+export const Checkbox = styled.section`
+    width: 290px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 25px;
+        width: 25px;
+    }
+
+    input:checked ~ span {
+        background-color: var(--tertiary);
+    }
+
+    span {
+        height: 25px;
+        width: 25px;
+        background-color: transparent;
+        border: 2px solid white;
+    }
+
+    p {
+        color: white;
+        font-size: 20px;
+        margin-right: 10px;
+        user-select: none;
     }
 `;

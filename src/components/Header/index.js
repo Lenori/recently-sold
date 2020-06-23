@@ -18,7 +18,7 @@ class Header extends Component {
     render() {
         return(
             <>            
-                <MenuIcon>
+                <MenuIcon alwaysWhite={this.props.alwaysWhite ? this.props.alwaysWhite : false}>
                     <FaBars onClick={() => this.setState({show: true})} />
                 </MenuIcon>
                 <Content show={this.state.show}>
