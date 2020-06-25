@@ -12,13 +12,6 @@ import Highlight from '../../components/Highlight';
 import {Content, Half, Title, Description, Items, Item, Actions} from './styles';
 
 class Home extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            form: false
-        }
-    }
     render() {
         return(
             <Content>

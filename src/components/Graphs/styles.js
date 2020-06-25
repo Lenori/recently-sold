@@ -6,6 +6,20 @@ export const Content = styled.div`
     padding: 90px 0;    
 
     @media (max-width: 900px) {
-        padding: 90px 0;
+        padding: 20px 0;
+    }
+
+    @media (max-width: 750px) {
+        display: none;
+    }
+`;
+
+export const GraphContainer = styled.div`
+    width: 100%;
+    height: 500px;
+    margin-bottom: 50px;
+
+    text {
+        fill: var(--tertiary) !important;
     }
 `;

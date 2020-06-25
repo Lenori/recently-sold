@@ -18,6 +18,8 @@ class Search extends Component {
         this.state = {
             showResults: false,
             results: [],
+            summary: [],
+            graphs: [],
             address: '',
             radius: null,
             soldDateMin: new Date(),
@@ -187,9 +189,143 @@ class Search extends Component {
             bathrooms: 2,
             sqfeet: 200
             }
+        ];
+
+        const summary = [
+            {label: 'Total sales', value: '120'},
+            {label: 'Dollar volume', value: '$1.200.000'},
+            {label: 'Average price', value: '$350.000'},
+            {label: 'Standard deviation', value: '375'},
+            {label: 'Low price', value: '$120.000'},
+            {label: 'High price', value: '$480.000'}
         ]
 
-        this.setState({results: results, showResults: true})
+        const graphs = [
+            [{
+              "id": "Sales",
+              "color": "hsl(189, 70%, 50%)",
+              "data": [
+                {
+                  "x": "2009",
+                  "y": 69
+                },
+                {
+                  "x": "2010",
+                  "y": 176
+                },
+                {
+                  "x": "2011",
+                  "y": 236
+                },
+                {
+                  "x": "2012",
+                  "y": 115
+                },
+                {
+                  "x": "2013",
+                  "y": 202
+                },
+                {
+                  "x": "2014",
+                  "y": 237
+                },
+                {
+                  "x": "2015",
+                  "y": 135
+                },
+                {
+                  "x": "2016",
+                  "y": 205
+                },
+                {
+                  "x": "2017",
+                  "y": 264
+                },
+                {
+                  "x": "2018",
+                  "y": 87
+                },
+                {
+                  "x": "2019",
+                  "y": 144
+                },
+                {
+                  "x": "2020",
+                  "y": 203
+                }
+              ]
+            }],
+            [{
+                "id": "Average price",
+                "color": "hsl(189, 70%, 50%)",
+                "data": [
+                  {
+                    "x": "2009",
+                    "y": 125000
+                  },
+                  {
+                    "x": "2010",
+                    "y": 135000
+                  },
+                  {
+                    "x": "2011",
+                    "y": 170000
+                  },
+                  {
+                    "x": "2012",
+                    "y": 230000
+                  },
+                  {
+                    "x": "2013",
+                    "y": 200000
+                  },
+                  {
+                    "x": "2014",
+                    "y": 250000
+                  },
+                  {
+                    "x": "2015",
+                    "y": 200000
+                  },
+                  {
+                    "x": "2016",
+                    "y": 190000
+                  },
+                  {
+                    "x": "2017",
+                    "y": 180000
+                  },
+                  {
+                    "x": "2018",
+                    "y": 230000
+                  },
+                  {
+                    "x": "2019",
+                    "y": 280000
+                  },
+                  {
+                    "x": "2020",
+                    "y": 250000
+                  }
+                ]
+              }]
+        ]
+
+        this.setState({
+            results: results,
+            summary: summary,
+            graphs: graphs,
+            showResults: true
+        })
+    }
+
+    componentDidMount() {
+        const params = new URLSearchParams(this.props.location.search); 
+
+        if (params.get('results')) {
+            this.search();
+            this.setState({showResults: true});
+        }
     }
     
     render() {
@@ -401,7 +537,12 @@ class Search extends Component {
                     </>
                 }
                 {this.state.showResults &&
-                    <Results results={this.state.results}/>
+                    <Results
+                        results={this.state.results}
+                        summary={this.state.summary}
+                        graphs={this.state.graphs}
+                        editSearch={() => this.setState({showResults: false})}
+                    />
                 }
             </Content>
         )

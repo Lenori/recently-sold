@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 import house from '../../../assets/house.jpg';
 
-import {Content, Actions, Items, Item, Pages} from './styles';
+import {Content, Actions, Items, Item, Pages, Export} from './styles';
 
 import Graphs from '../../../components/Graphs';
 import Summary from '../../../components/Summary';
@@ -45,21 +45,24 @@ class Results extends Component {
                     <Actions>
                         <section>
                             <Pages active>1</Pages>
-                            <Pages>1</Pages>
-                            <Pages>1</Pages>
-                            <Pages>1</Pages>
-                            <Pages>1</Pages>
-                            <Pages>1</Pages>
+                            <Pages>2</Pages>
+                            <Pages>3</Pages>
+                            <Pages>4</Pages>
+                            <Pages>5</Pages>
                         </section>
                         <section>
-                            <button>Edit search</button>
+                            <button onClick={() => this.props.editSearch()}>Edit search</button>
                             <button>Share search</button>
                             <button>Save search</button>
                         </section>
                     </Actions>
 
-                    <Graphs />
-                    <Summary />
+                    <Summary summary={this.props.summary} />
+                    <Graphs graphs={this.props.graphs} />
+
+                    <Export>
+                        <button>Export data</button>
+                    </Export>
                 </Content>
         )
     }

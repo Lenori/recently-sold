@@ -8,6 +8,11 @@ class Summary extends Component {
         return(
             <Content>
                 <h1>Summary</h1>
+                <div>
+                    {this.props.summary.map((item, index) => (
+                        <p key={index}><span>{item.label}:</span> {item.value}</p>
+                    ))}
+                </div>
             </Content>
         )
     }

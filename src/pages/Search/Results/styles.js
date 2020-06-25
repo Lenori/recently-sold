@@ -21,16 +21,30 @@ export const Actions = styled.div`
     z-index: 1;
     margin-top: 40px;
 
+    @media (max-width: 1150px) {
+        flex-direction: column;
+        align-items: center;
+    }
+
     section {
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
         width: 50%;
-        z-index: 1;
+        z-index: 1;   
 
         :first-child {
             align-items: flex-start;
-            justify-content: flex-start;            
+            justify-content: flex-start;
+
+            @media (max-width: 1150px) {
+                align-items: center;
+                justify-content: center;
+                
+                span {
+                    margin: 0 10px;
+                }
+            }             
         }
         
         @media (max-width: 1400px) {
@@ -38,10 +52,39 @@ export const Actions = styled.div`
             margin: 90px auto 0;
         }
 
+        @media (max-width: 1150px) {
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0 auto 40px;
+        }  
+
         button {
             margin-left: 20px;
-            font-size: 20px;
+            font-size: 20px;            
+
+            @media (max-width: 1150px) {
+                margin: 0 10px;
+            }
         }
+    }
+`;
+
+export const Export = styled.div`
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    z-index: 1;
+
+    @media (max-width: 1150px) {
+        width: 90%;
+        margin: 90px auto 0;
+    }
+
+    button {
+        margin-left: 20px;
+        font-size: 20px;
     }
 `;
 
