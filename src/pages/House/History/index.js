@@ -8,7 +8,7 @@ class History extends Component {
         return(
             <Content>
                 {this.props.history.map(history => (
-                    history.event == 'Built'
+                    history.event === 'Built'
                         ? 
                         <p>
                             <span>{history.date}</span>|

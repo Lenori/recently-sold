@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-
-import search from '../../assets/search.svg';
-import data from '../../assets/data.svg';
-import membership from '../../assets/membership.svg';
-import api from '../../assets/api.svg';
 
 import Header from '../../components/Header';
-import Highlight from '../../components/Highlight';
 
 import {Content, Items, Item, Recommended} from './styles';
 

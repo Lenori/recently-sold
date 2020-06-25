@@ -1,18 +1,6 @@
 import React, {Component} from 'react';
 import {ResponsiveLine} from '@nivo/line'
 
-const theme = {
-    axis: {
-      textColor: '#eee',
-      fontSize: '14px',
-      tickColor: '#eee',
-    },
-    grid: {
-      stroke: '#888',
-      strokeWidth: 1
-    },
-  };
-
 class Line extends Component {
 
     render() {

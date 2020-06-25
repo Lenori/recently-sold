@@ -16,7 +16,7 @@ class Location extends Component {
                     height={100}
                     width={100}          
                 />
-                <iframe src={`http://maps.google.com/maps?q=${this.props.address}&output=embed`} width="100%" height="500" frameBorder="0" allowfullscreen="" aria-hidden="false" tabindex="0">
+                <iframe title="google-maps" src={`http://maps.google.com/maps?q=${this.props.address}&output=embed`} width="100%" height="500" frameBorder="0" allowfullscreen="" aria-hidden="false" tabindex="0">
                 </iframe>
             </Content>
         )
