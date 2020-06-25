@@ -7,6 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import selectStyles from './selectStyles';
 
 import Header from '../../components/Header';
+import Results from './Results';
 
 import {Content, Half, Input, Actions, DateInput, Range, SelectInput, Checkbox} from './styles';
 
@@ -15,6 +16,8 @@ class Search extends Component {
         super();
 
         this.state = {
+            showResults: false,
+            results: [],
             address: '',
             radius: null,
             soldDateMin: new Date(),
@@ -46,220 +49,360 @@ class Search extends Component {
                 { value: 'venue3', label: 'Venue 3' }
             ]
         }
+
+        this.search = this.search.bind(this);
     }
 
-    handleChangeStart = () => {
-        console.log('Change event started')
-      };
-    
-      handleChangeComplete = () => {
-        console.log('Change event completed')
-      };
+    search() {
+        const results = [
+            {
+            id: 1,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 2,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 3,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 4,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 5,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 6,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 7,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 8,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 9,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 10,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 11,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            },
+            {
+            id: 12,
+            img: 'img_url',
+            title: '555 Stanley Ave',
+            city: 'New York, NY',
+            price: '200.000',
+            sold_date: '12/12/2019',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqfeet: 200
+            }
+        ]
+
+        this.setState({results: results, showResults: true})
+    }
     
     render() {
         return(
             <Content>
                 <Header alwaysWhite={true} />
-                <Half fixed>
-                    <Input value={this.state.address} onChange={(e) => this.setState({address: e.target.value})} type="text" placeholder="Enter address keyword (E.G. New York)" />
-                    <Range>
-                        <p>Radius from {this.state.address ? this.state.address : 'this address'}: </p>
-                        <Slider
-                            min={0}
-                            max={100}
-                            value={this.state.radius}
-                            handleLabel={this.state.radius ? `${this.state.radius.toString()} miles` : ''}
-                            tooltip={false}
-                            onChange={(e) => this.setState({radius: e})}
-                        />
-                    </Range>
-                    <DateInput>
-                        <p>Sold date between </p>
-                        <DatePicker
-                            selected={this.state.soldDateMin}
-                            onChange={date => this.setState({soldDateMin: date})}
-                            className="date-input"
-                        />
-                        <p>and </p>
-                        <DatePicker
-                            selected={this.state.soldDateMax}
-                            onChange={date => this.setState({soldDateMax: date})}
-                            className="date-input"
-                        />
-                    </DateInput>
-                    <Range>
-                        <p>Sold price between </p>
-                        <section>
+                {!this.state.showResults &&
+                    <>
+                    <Half fixed>
+                        <Input value={this.state.address} onChange={(e) => this.setState({address: e.target.value})} type="text" placeholder="Enter address keyword (E.G. New York)" />
+                        <Range>
+                            <p>Radius from {this.state.address ? this.state.address : 'this address'}: </p>
                             <Slider
-                                min={10000}
-                                max={1000000}
-                                step={10000}
-                                value={this.state.priceMin}
-                                handleLabel={this.state.priceMin ? `$${this.state.priceMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({priceMin: e})}
-                            />
-                            <p>and </p>
-                            <Slider
-                                min={10000}
-                                max={1000000}
-                                step={10000}
-                                value={this.state.priceMax}
-                                handleLabel={this.state.priceMax ? `$${this.state.priceMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({priceMax: e})}
-                            />
-                        </section>
-                    </Range>
-                    <Range>
-                        <p>Bedrooms between </p>
-                        <section>
-                            <Slider
-                                min={1}
-                                max={5}
-                                value={this.state.bedroomsMin}
-                                handleLabel={this.state.bedroomsMin ? `${this.state.bedroomsMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({bedroomsMin: e})}
-                            />
-                            <p>and </p>
-                            <Slider
-                                min={1}
-                                max={5}
-                                value={this.state.badroomsMax}
-                                handleLabel={this.state.badroomsMax ? `${this.state.badroomsMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({badroomsMax: e})}
-                            />
-                        </section>
-                    </Range>
-                    <Range>
-                        <p>Bathrooms between </p>
-                        <section>
-                            <Slider
-                                min={1}
-                                max={5}
-                                value={this.state.bathroomsMin}
-                                handleLabel={this.state.bathroomsMin ? `${this.state.bathroomsMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({bathroomsMin: e})}
-                            />
-                            <p>and </p>
-                            <Slider
-                                min={1}
-                                max={5}
-                                value={this.state.bathroomsMax}
-                                handleLabel={this.state.bathroomsMax ? `${this.state.bathroomsMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({bathroomsMax: e})}
-                            />
-                        </section>
-                    </Range>
-                    <Range>
-                        <p>Square feet between </p>
-                        <section>
-                            <Slider
-                                min={20}
+                                min={0}
                                 max={100}
-                                step={10}
-                                value={this.state.sqfeetMin}
-                                handleLabel={this.state.sqfeetMin ? `${this.state.sqfeetMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                value={this.state.radius}
+                                handleLabel={this.state.radius ? `${this.state.radius.toString()} miles` : ''}
                                 tooltip={false}
-                                onChange={(e) => this.setState({sqfeetMin: e})}
+                                onChange={(e) => this.setState({radius: e})}
+                            />
+                        </Range>
+                        <DateInput>
+                            <p>Sold date between </p>
+                            <DatePicker
+                                selected={this.state.soldDateMin}
+                                onChange={date => this.setState({soldDateMin: date})}
+                                className="date-input"
                             />
                             <p>and </p>
-                            <Slider
-                                min={20}
-                                max={100}                            
-                                step={10}
-                                value={this.state.sqfeetMax}
-                                handleLabel={this.state.sqfeetMax ? `${this.state.sqfeetMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({sqfeetMax: e})}
+                            <DatePicker
+                                selected={this.state.soldDateMax}
+                                onChange={date => this.setState({soldDateMax: date})}
+                                className="date-input"
                             />
-                        </section>
-                    </Range>
-                    <Range>
-                        <p>Lot size between </p>
-                        <section>
-                            <Slider
-                                min={50}
-                                max={500}
-                                step={50}
-                                value={this.state.lotMin}
-                                handleLabel={this.state.lotMin ? `${this.state.lotMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({lotMin: e})}
-                            />
-                            <p>and </p>
-                            <Slider
-                                min={50}
-                                max={500}                            
-                                step={50}
-                                value={this.state.lotMax}
-                                handleLabel={this.state.lotMax ? `${this.state.lotMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({lotMax: e})}
-                            />
-                        </section>
-                    </Range>
-                    <Range>
-                        <p>Year built between </p>
-                        <section>
-                            <Slider
-                                min={1900}
-                                max={2020}
-                                step={10}
-                                value={this.state.yearMin}
-                                handleLabel={this.state.yearMin ? `${this.state.yearMin.toString()}` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({yearMin: e})}
-                            />
-                            <p>and </p>
-                            <Slider
-                                min={1900}
-                                max={2020}                            
-                                step={10}
-                                value={this.state.yearMax}
-                                handleLabel={this.state.yearMax ? `${this.state.yearMax.toString()}` : ''}
-                                tooltip={false}
-                                onChange={(e) => this.setState({yearMax: e})}
-                            />
-                        </section>
-                    </Range>
-                </Half>
+                        </DateInput>
+                        <Range>
+                            <p>Sold price between </p>
+                            <section>
+                                <Slider
+                                    min={10000}
+                                    max={1000000}
+                                    step={10000}
+                                    value={this.state.priceMin}
+                                    handleLabel={this.state.priceMin ? `$${this.state.priceMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({priceMin: e})}
+                                />
+                                <p>and </p>
+                                <Slider
+                                    min={10000}
+                                    max={1000000}
+                                    step={10000}
+                                    value={this.state.priceMax}
+                                    handleLabel={this.state.priceMax ? `$${this.state.priceMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({priceMax: e})}
+                                />
+                            </section>
+                        </Range>
+                        <Range>
+                            <p>Bedrooms between </p>
+                            <section>
+                                <Slider
+                                    min={1}
+                                    max={5}
+                                    value={this.state.bedroomsMin}
+                                    handleLabel={this.state.bedroomsMin ? `${this.state.bedroomsMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({bedroomsMin: e})}
+                                />
+                                <p>and </p>
+                                <Slider
+                                    min={1}
+                                    max={5}
+                                    value={this.state.badroomsMax}
+                                    handleLabel={this.state.badroomsMax ? `${this.state.badroomsMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({badroomsMax: e})}
+                                />
+                            </section>
+                        </Range>
+                        <Range>
+                            <p>Bathrooms between </p>
+                            <section>
+                                <Slider
+                                    min={1}
+                                    max={5}
+                                    value={this.state.bathroomsMin}
+                                    handleLabel={this.state.bathroomsMin ? `${this.state.bathroomsMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({bathroomsMin: e})}
+                                />
+                                <p>and </p>
+                                <Slider
+                                    min={1}
+                                    max={5}
+                                    value={this.state.bathroomsMax}
+                                    handleLabel={this.state.bathroomsMax ? `${this.state.bathroomsMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({bathroomsMax: e})}
+                                />
+                            </section>
+                        </Range>
+                        <Range>
+                            <p>Square feet between </p>
+                            <section>
+                                <Slider
+                                    min={20}
+                                    max={100}
+                                    step={10}
+                                    value={this.state.sqfeetMin}
+                                    handleLabel={this.state.sqfeetMin ? `${this.state.sqfeetMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({sqfeetMin: e})}
+                                />
+                                <p>and </p>
+                                <Slider
+                                    min={20}
+                                    max={100}                            
+                                    step={10}
+                                    value={this.state.sqfeetMax}
+                                    handleLabel={this.state.sqfeetMax ? `${this.state.sqfeetMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({sqfeetMax: e})}
+                                />
+                            </section>
+                        </Range>
+                        <Range>
+                            <p>Lot size between </p>
+                            <section>
+                                <Slider
+                                    min={50}
+                                    max={500}
+                                    step={50}
+                                    value={this.state.lotMin}
+                                    handleLabel={this.state.lotMin ? `${this.state.lotMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({lotMin: e})}
+                                />
+                                <p>and </p>
+                                <Slider
+                                    min={50}
+                                    max={500}                            
+                                    step={50}
+                                    value={this.state.lotMax}
+                                    handleLabel={this.state.lotMax ? `${this.state.lotMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({lotMax: e})}
+                                />
+                            </section>
+                        </Range>
+                        <Range>
+                            <p>Year built between </p>
+                            <section>
+                                <Slider
+                                    min={1900}
+                                    max={2020}
+                                    step={10}
+                                    value={this.state.yearMin}
+                                    handleLabel={this.state.yearMin ? `${this.state.yearMin.toString()}` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({yearMin: e})}
+                                />
+                                <p>and </p>
+                                <Slider
+                                    min={1900}
+                                    max={2020}                            
+                                    step={10}
+                                    value={this.state.yearMax}
+                                    handleLabel={this.state.yearMax ? `${this.state.yearMax.toString()}` : ''}
+                                    tooltip={false}
+                                    onChange={(e) => this.setState({yearMax: e})}
+                                />
+                            </section>
+                        </Range>
+                    </Half>
 
-                <Half>
-                    <Input value={this.state.brokerage} onChange={(e) => this.setState({brokerage: e.target.value})} type="text" placeholder="Enter brokerage company or agent" />
-                    <SelectInput>
-                        <Select
-                            options={this.state.propertyTypes}
-                            styles={selectStyles}
-                            isMulti
-                            className='select-input'
-                            placeholder='Select a property type'
-                            onChange={(e) => this.setState({propertyType: e})}
-                        />
-                    </SelectInput>
-                    <SelectInput>
-                        <Select
-                            options={this.state.venues}
-                            styles={selectStyles}
-                            isMulti
-                            className='select-input'
-                            placeholder='Select a venue'
-                            onChange={(e) => this.setState({venue: e})}
-                        />
-                    </SelectInput>                    
-                    <Checkbox>
-                        <input onClick={() => this.setState({showPictures: !this.state.showPictures})} type='checkbox' />
-                        <span></span>
-                        <p>Show results with pictures</p>
-                    </Checkbox>
-                    <Actions>
-                        <button>Search</button>
-                    </Actions>          
-                </Half>
+                    <Half>
+                        <Input value={this.state.brokerage} onChange={(e) => this.setState({brokerage: e.target.value})} type="text" placeholder="Enter brokerage company or agent" />
+                        <SelectInput>
+                            <Select
+                                options={this.state.propertyTypes}
+                                styles={selectStyles}
+                                isMulti
+                                className='select-input'
+                                placeholder='Select a property type'
+                                onChange={(e) => this.setState({propertyType: e})}
+                            />
+                        </SelectInput>
+                        <SelectInput>
+                            <Select
+                                options={this.state.venues}
+                                styles={selectStyles}
+                                isMulti
+                                className='select-input'
+                                placeholder='Select a venue'
+                                onChange={(e) => this.setState({venue: e})}
+                            />
+                        </SelectInput>                    
+                        <Checkbox>
+                            <input onClick={() => this.setState({showPictures: !this.state.showPictures})} type='checkbox' />
+                            <span></span>
+                            <p>Show results with pictures</p>
+                        </Checkbox>
+                        <Actions>
+                            <button onClick={() => this.search()}>Search</button>
+                        </Actions>          
+                    </Half>
+                    </>
+                }
+                {this.state.showResults &&
+                    <Results results={this.state.results}/>
+                }
             </Content>
         )
     }
