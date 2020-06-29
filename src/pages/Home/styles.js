@@ -37,6 +37,20 @@ export const Half = styled.div`
     }
 `;
 
+export const Logo = styled.img`
+    width: 430px;
+
+    @media (max-width: 1150px) {
+        width: 600px;
+        margin: 110px auto 50px;
+    }
+
+    @media (max-width: 750px) {
+        width: 80%;
+        margin: 110px auto 50px;
+    }
+`;
+
 export const Title = styled.div`
     min-width: 396px;
 

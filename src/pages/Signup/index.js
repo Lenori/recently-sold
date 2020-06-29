@@ -4,7 +4,9 @@ import {Link} from 'react-router-dom';
 import Header from '../../components/Header';
 import Highlight from '../../components/Highlight';
 
-import {Content, Half, Title, Description, Input, Actions} from './styles';
+import logo from '../../assets/logo-color.png';
+
+import {Content, Half, Logo, Title, Description, Input, Actions} from './styles';
 
 class Signup extends Component {
     constructor() {
@@ -20,12 +22,9 @@ class Signup extends Component {
     render() {
         return(
             <Content>
-                <Header />
+                <Header hideLogo />
                 <Half fixed>
-                    <Title>
-                        <h1>Real Estate</h1>
-                        <p>data search tool</p>
-                    </Title>
+                    <Logo src={logo} alt='recently sold' />
 
                     <Description>
                         <p>Lorem ipsum <span>dolor</span> sit amet, consectetur adipiscing elit. Integer <span>mattis massa</span> sit amet nisl rhoncus, at sodales dolor fringilla. Etiam pretium leo non arcu molestie, quis maximus urna varius. Donec viverra justo volutpat lacus ornare <span>lacinia</span>. Suspendisse eros libero, eleifend et mi vitae.</p>

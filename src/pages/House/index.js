@@ -161,7 +161,7 @@ class Home extends Component {
                         }
     
                         <Actions>
-                            <Link to='/search?results=true'><button>Back to results</button></Link>
+                            <Link to='/search'><button>Back to results</button></Link>
                         </Actions>
                     </Half>            
                 

@@ -91,6 +91,25 @@ export const Range = styled.section`
         }
     }
 
+    input {
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid var(--tertiary);
+        width: 20%;
+        padding: 10px 10px 10px 0;
+        color: var(--tertiary);
+        font-size: 20px;
+
+        &::placeholder {
+            color: var(--tertiary);
+        }
+
+        @media (max-width: 850px) {
+            width: 80%;
+            margin-bottom: 10px;
+        }
+    }
+
     @media (max-width: 850px) {
         flex-direction: column;
         align-items: flex-start;
@@ -146,6 +165,10 @@ export const Input = styled.input`
     padding: 10px 10px 10px 0;
     color: var(--tertiary);
     font-size: 20px;
+
+    ${props => props.small && css`        
+        width: 30%;
+    `}
 
     &::placeholder {
         color: var(--tertiary);

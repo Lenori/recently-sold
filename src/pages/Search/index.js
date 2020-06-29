@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Select from 'react-select'
 import Slider from 'react-rangeslider'
+import CurrencyInput from 'react-currency-input';
 import DatePicker from 'react-datepicker';
 import 'react-rangeslider/lib/index.css'
 import 'react-datepicker/dist/react-datepicker.css';
@@ -16,16 +17,20 @@ class Search extends Component {
         super();
 
         this.state = {
-            showResults: false,
             results: [],
             summary: [],
             graphs: [],
-            address: '',
+            address: null,
+            addressOptions: [
+              { value: 'new-york', label: 'New York' },
+              { value: 'chicago', label: 'Chicago' },
+              { value: 'los-angeles', label: 'Los Angeles' }
+            ],
             radius: null,
             soldDateMin: new Date(),
             soldDateMax: new Date(),
-            priceMin: null,
-            priceMax: null,
+            priceMin: 0,
+            priceMax: 0,
             bedroomsMin: null,
             bedroomsMax: null,
             bathroomsMin: null,
@@ -200,61 +205,7 @@ class Search extends Component {
             {label: 'High price', value: '$480.000'}
         ]
 
-        const graphs = [
-            [{
-              "id": "Sales",
-              "color": "hsl(189, 70%, 50%)",
-              "data": [
-                {
-                  "x": "2009",
-                  "y": 69
-                },
-                {
-                  "x": "2010",
-                  "y": 176
-                },
-                {
-                  "x": "2011",
-                  "y": 236
-                },
-                {
-                  "x": "2012",
-                  "y": 115
-                },
-                {
-                  "x": "2013",
-                  "y": 202
-                },
-                {
-                  "x": "2014",
-                  "y": 237
-                },
-                {
-                  "x": "2015",
-                  "y": 135
-                },
-                {
-                  "x": "2016",
-                  "y": 205
-                },
-                {
-                  "x": "2017",
-                  "y": 264
-                },
-                {
-                  "x": "2018",
-                  "y": 87
-                },
-                {
-                  "x": "2019",
-                  "y": 144
-                },
-                {
-                  "x": "2020",
-                  "y": 203
-                }
-              ]
-            }],
+        const graphs = [            
             [{
                 "id": "Average price",
                 "color": "hsl(189, 70%, 50%)",
@@ -314,30 +265,33 @@ class Search extends Component {
         this.setState({
             results: results,
             summary: summary,
-            graphs: graphs,
-            showResults: true
+            graphs: graphs
         })
     }
 
     componentDidMount() {
-        const params = new URLSearchParams(this.props.location.search); 
-
-        if (params.get('results')) {
-            this.search();
-            this.setState({showResults: true});
-        }
+        this.search();
     }
     
     render() {
         return(
+            <>
             <Content>
                 <Header alwaysWhite={true} />
                 {!this.state.showResults &&
                     <>
                     <Half fixed>
-                        <Input value={this.state.address} onChange={(e) => this.setState({address: e.target.value})} type="text" placeholder="Enter address keyword (E.G. New York)" />
+                        <SelectInput>
+                            <Select
+                                options={this.state.addressOptions}
+                                styles={selectStyles}
+                                className='select-input'
+                                placeholder='Enter address keyword (E.G. New York)'
+                                onChange={(e) => this.setState({address: e})}
+                            />
+                        </SelectInput>
                         <Range>
-                            <p>Radius from {this.state.address ? this.state.address : 'this address'}: </p>
+                            <p>Radius from {this.state.address ? this.state.address.label : 'this address'}: </p>
                             <Slider
                                 min={0}
                                 max={100}
@@ -363,27 +317,9 @@ class Search extends Component {
                         </DateInput>
                         <Range>
                             <p>Sold price between </p>
-                            <section>
-                                <Slider
-                                    min={10000}
-                                    max={1000000}
-                                    step={10000}
-                                    value={this.state.priceMin}
-                                    handleLabel={this.state.priceMin ? `$${this.state.priceMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
-                                    tooltip={false}
-                                    onChange={(e) => this.setState({priceMin: e})}
-                                />
-                                <p>and </p>
-                                <Slider
-                                    min={10000}
-                                    max={1000000}
-                                    step={10000}
-                                    value={this.state.priceMax}
-                                    handleLabel={this.state.priceMax ? `$${this.state.priceMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
-                                    tooltip={false}
-                                    onChange={(e) => this.setState({priceMax: e})}
-                                />
-                            </section>
+                            <CurrencyInput prefix="$" value={this.state.priceMin} onChangeEvent={(e, maskedvalue, floatValue) => this.setState({priceMin: maskedvalue})}/>
+                            <p>and </p>
+                            <CurrencyInput prefix="$" value={this.state.priceMax} onChangeEvent={(e, maskedvalue, floatValue) => this.setState({priceMax: maskedvalue})}/>
                         </Range>
                         <Range>
                             <p>Bedrooms between </p>
@@ -392,7 +328,7 @@ class Search extends Component {
                                     min={1}
                                     max={5}
                                     value={this.state.bedroomsMin}
-                                    handleLabel={this.state.bedroomsMin ? `${this.state.bedroomsMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    handleLabel={this.state.bedroomsMin ? `${this.state.bedroomsMin.toString()}` : ''}
                                     tooltip={false}
                                     onChange={(e) => this.setState({bedroomsMin: e})}
                                 />
@@ -400,10 +336,10 @@ class Search extends Component {
                                 <Slider
                                     min={1}
                                     max={5}
-                                    value={this.state.badroomsMax}
-                                    handleLabel={this.state.badroomsMax ? `${this.state.badroomsMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    value={this.state.bedroomsMax}
+                                    handleLabel={this.state.bedroomsMax ? `${this.state.bedroomsMax.toString()}${this.state.bedroomsMax == 5 ? '+' : ''}` : ''}
                                     tooltip={false}
-                                    onChange={(e) => this.setState({badroomsMax: e})}
+                                    onChange={(e) => this.setState({bedroomsMax: e})}
                                 />
                             </section>
                         </Range>
@@ -414,7 +350,7 @@ class Search extends Component {
                                     min={1}
                                     max={5}
                                     value={this.state.bathroomsMin}
-                                    handleLabel={this.state.bathroomsMin ? `${this.state.bathroomsMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    handleLabel={this.state.bathroomsMin ? `${this.state.bathroomsMin.toString()}` : ''}
                                     tooltip={false}
                                     onChange={(e) => this.setState({bathroomsMin: e})}
                                 />
@@ -423,7 +359,7 @@ class Search extends Component {
                                     min={1}
                                     max={5}
                                     value={this.state.bathroomsMax}
-                                    handleLabel={this.state.bathroomsMax ? `${this.state.bathroomsMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}` : ''}
+                                    handleLabel={this.state.bathroomsMax ? `${this.state.bathroomsMax.toString()}${this.state.bathroomsMax == 5 ? '+' : ''}` : ''}
                                     tooltip={false}
                                     onChange={(e) => this.setState({bathroomsMax: e})}
                                 />
@@ -437,7 +373,7 @@ class Search extends Component {
                                     max={100}
                                     step={10}
                                     value={this.state.sqfeetMin}
-                                    handleLabel={this.state.sqfeetMin ? `${this.state.sqfeetMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                    handleLabel={this.state.sqfeetMin ? `${this.state.sqfeetMin.toString()}ft²` : ''}
                                     tooltip={false}
                                     onChange={(e) => this.setState({sqfeetMin: e})}
                                 />
@@ -447,7 +383,7 @@ class Search extends Component {
                                     max={100}                            
                                     step={10}
                                     value={this.state.sqfeetMax}
-                                    handleLabel={this.state.sqfeetMax ? `${this.state.sqfeetMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                    handleLabel={this.state.sqfeetMax ? `${this.state.sqfeetMax.toString()}${this.state.sqfeetMax == 100 ? '+' : ''} ft²` : ''}
                                     tooltip={false}
                                     onChange={(e) => this.setState({sqfeetMax: e})}
                                 />
@@ -461,7 +397,7 @@ class Search extends Component {
                                     max={500}
                                     step={50}
                                     value={this.state.lotMin}
-                                    handleLabel={this.state.lotMin ? `${this.state.lotMin.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                    handleLabel={this.state.lotMin ? `${this.state.lotMin.toString()} acres` : ''}
                                     tooltip={false}
                                     onChange={(e) => this.setState({lotMin: e})}
                                 />
@@ -471,7 +407,7 @@ class Search extends Component {
                                     max={500}                            
                                     step={50}
                                     value={this.state.lotMax}
-                                    handleLabel={this.state.lotMax ? `${this.state.lotMax.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}ft²` : ''}
+                                    handleLabel={this.state.lotMax ? `${this.state.lotMax.toString()}${this.state.lotMax == 500 ? '+' : ''} acres` : ''}
                                     tooltip={false}
                                     onChange={(e) => this.setState({lotMax: e})}
                                 />
@@ -495,7 +431,7 @@ class Search extends Component {
                                     max={2020}                            
                                     step={10}
                                     value={this.state.yearMax}
-                                    handleLabel={this.state.yearMax ? `${this.state.yearMax.toString()}` : ''}
+                                    handleLabel={this.state.yearMax ? `${this.state.yearMax.toString()}${this.state.yearMax == 2020 ? '+' : ''}` : ''}
                                     tooltip={false}
                                     onChange={(e) => this.setState({yearMax: e})}
                                 />
@@ -536,15 +472,15 @@ class Search extends Component {
                     </Half>
                     </>
                 }
-                {this.state.showResults &&
-                    <Results
-                        results={this.state.results}
-                        summary={this.state.summary}
-                        graphs={this.state.graphs}
-                        editSearch={() => this.setState({showResults: false})}
-                    />
-                }
-            </Content>
+            </Content>            
+            <Results
+              results={this.state.results}
+              totalItems={120}
+              summary={this.state.summary}
+              graphs={this.state.graphs}
+              images={this.state.showPictures}
+            />
+            </>
         )
     }
 }

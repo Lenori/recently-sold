@@ -7,9 +7,46 @@ export const Content = styled.div`
     flex-direction: column;
     width: 100%;
     z-index: 1;
+    padding: 40px 90px;
 
     h1 {
         color: var(--tertiary);
+    }
+
+    p {
+        margin-top: 10px;
+        font-size: 13px;
+        color: var(--tertiary);
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    th {
+        border: 1px solid var(--primary);
+        background-color: var(--tertiary);
+        color: var(--primary);
+        font-weight: bold;
+        padding: 8px;
+    }
+
+    td {
+        border: 1px solid var(--tertiary);
+        padding: 10px;
+        color: var(--tertiary);
+
+        a {
+            color: inherit;
+        }
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ca2042;
     }
 `;
 
@@ -176,6 +213,9 @@ export const Item = styled.div`
             }
 
             p {
+                color: var(--secondary);
+                font-size: 15px;
+                margin: unset;
                 span {
                     color: var(--primary);
                     font-weight: bold;
