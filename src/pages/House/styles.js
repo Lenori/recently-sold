@@ -51,6 +51,30 @@ export const Half = styled.div`
     }
 `;
 
+export const Logo = styled.img`
+    width: 200px;
+    position: absolute;
+    top: 20px;
+    right: 75px;
+
+    @media (max-width: 1150px) {
+        display: none;
+    }
+`;
+
+export const LogoColor = styled.img`
+    width: 200px;
+    position: absolute;
+    top: 20px;
+    right: 75px;
+    display: none;
+    z-index: 2;
+
+    @media (max-width: 1150px) {
+        display: block;
+    }
+`;
+
 export const Title = styled.div`
     min-width: 396px;
     width: 100%;

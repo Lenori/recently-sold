@@ -54,17 +54,19 @@ class Results extends Component {
                         <table>
                             <tr>
                             <th>Address</th>
-                            <th>City/State</th>
-                            <th>Price</th>
+                            <th>Home size (SF)</th>
+                            <th>Lot size</th>
+                            <th>Sale price</th>
                             <th>Sale date</th>
-                            <th>Actions</th>
+                            <th>Details</th>
                             </tr>
 
                             {this.props.results.map(result =>(
                                 <tr>
-                                    <td>{result.title}</td>
-                                    <td>{result.city}</td>
-                                    <td>${result.price}</td>
+                                    <td>{`${result.title}, ${result.city}, ${result.zip}`}</td>
+                                    <td>{`${result.sqfeet}ft²`}</td>
+                                    <td>{`${result.lotsize} acres`}</td>
+                                    <td>{`$${result.price}`}</td>
                                     <td>{result.sold_date}</td>
                                     <td><Link to={`house/${result.id}`}>View</Link></td>
                                 </tr>

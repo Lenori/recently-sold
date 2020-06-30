@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Content} from './styles';
+import {Content, Items, Item} from './styles';
 
 class Summary extends Component {
 
@@ -8,11 +8,14 @@ class Summary extends Component {
         return(
             <Content>
                 <h1>Summary</h1>
-                <div>
+                <Items>
                     {this.props.summary.map((item, index) => (
-                        <p key={index}><span>{item.label}:</span> {item.value}</p>
+                        <Item key={index}>
+                            <h1>{item.value}</h1>
+                            <p>{item.label}</p>
+                        </Item>
                     ))}
-                </div>
+                </Items>
             </Content>
         )
     }

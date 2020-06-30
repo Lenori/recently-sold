@@ -8,25 +8,43 @@ export const Content = styled.div`
     @media (max-width: 900px) {
         padding: 20px 0;
     }
+`;
 
-    div {        
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin: 20px 0 0;        
+export const Items = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 20px 0 0;    
+    align-items: flex-start;
+`;
 
-        p {
-            font-size: 20px;
-            margin-bottom: 10px;
-            width: 50%;
+export const Item = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0 0;
+    flex-direction: column;
+    text-align: center;
+    width: 16.66%;
 
-            @media (max-width: 900px) {
-                width: 100%;
-            }
-        }
+    @media (max-width: 1300px) {
+        width: 33.33%;
+        margin: 20px 0 40px;
+    }
 
-        @media (max-width: 900px) {
-            flex-direction: column;
-        }
+    @media (max-width: 780px) {
+        width: 50%;
+    }
+
+    @media (max-width: 550px) {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 15px;
     }
 `;

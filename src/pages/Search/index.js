@@ -67,10 +67,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -78,10 +80,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -89,10 +93,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -100,10 +106,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -111,10 +119,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -122,10 +132,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -133,10 +145,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -144,10 +158,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -155,10 +171,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -166,10 +184,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -177,10 +197,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             },
             {
@@ -188,10 +210,12 @@ class Search extends Component {
             img: 'img_url',
             title: '555 Stanley Ave',
             city: 'New York, NY',
+            zip: '238948',
             price: '200.000',
             sold_date: '12/12/2019',
             bedrooms: 3,
             bathrooms: 2,
+            lotsize: 500,
             sqfeet: 200
             }
         ];

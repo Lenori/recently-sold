@@ -8,7 +8,10 @@ import Location from './Location';
 import History from './History';
 import Similar from './Similar';
 
-import {Content, Half, Title, Description, Menu, Item, Actions} from './styles';
+import logo from '../../assets/logo.png';
+import logocolor from '../../assets/logo-color.png';
+
+import {Content, Half, Logo, LogoColor, Title, Description, Menu, Item, Actions} from './styles';
 
 import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
@@ -116,6 +119,8 @@ class Home extends Component {
 
                 {!this.state.loading &&
                     <>
+                    <Logo src={logo} alt='recently-sold' />
+                    <LogoColor src={logocolor} alt='recently-sold' />
                     <Half fixed>
                         <Title>
                             <h1>{this.state.house.title}</h1>
