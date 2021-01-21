@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Content} from './styles';
+import {Content, Item} from './styles';
 
 class History extends Component {
 
@@ -10,17 +10,16 @@ class History extends Component {
                 {this.props.history.map(history => (
                     history.event === 'Built'
                         ? 
-                        <p>
-                            <span>{history.date}</span>|
-                            <span>{history.event}</span>
-                        </p>
+
+                            <Item>
+                                <p><span>{history.date}</span> | <span>{history.event}</span></p>
+                            </Item>
+
                         :
-                        <p>
-                            <span>{history.date}</span>|
-                            <span>{history.event}</span>
-                            by<span>Broker Name</span>
-                            {history.event === 'Sold' ? 'for' : 'asking'}<span>${history.price}.</span>
-                        </p>  
+
+                            <Item>
+                                <p><span>{history.date}</span> | <span>{history.event}</span> by <span>{history.agent}</span> {history.event === 'Sold' ? 'for' : 'asking'} $<span>{history.price}</span></p>  
+                            </Item>
                                                              
                     ))}
             </Content>

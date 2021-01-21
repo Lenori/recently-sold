@@ -6,7 +6,7 @@ import Highlight from '../../components/Highlight';
 
 import logo from '../../assets/logo-color.png';
 
-import {Content, Half, Logo, Title, Description, Input, Actions} from './styles';
+import {Content, Half, Logo, Title, Description, Input, Actions, FormSection} from './styles';
 
 class Signin extends Component {
     constructor() {
@@ -30,13 +30,15 @@ class Signin extends Component {
                 </Half>
 
                 <Half>
-                    <Input value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} type="text" placeholder="E-mail" />
-                    <Input value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} type="password" placeholder="Password" />
+                    <FormSection>
+                        <Input value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} type="text" placeholder="E-mail" />
+                        <Input value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} type="password" placeholder="Password" />
 
-                    <Actions>
-                        <Link to='/register'><p>Don’t have an account? Create one!</p></Link>
-                        <button>Login</button>
-                    </Actions>
+                        <Actions>
+                            <Link to='/register'><p>Don’t have an account? Create one!</p></Link>
+                            <button>Login</button>
+                        </Actions>
+                    </FormSection>
                 </Half>            
             
                 <Highlight />

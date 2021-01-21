@@ -85,6 +85,10 @@ export const Title = styled.div`
         margin: 90px auto 50px;
     }
 
+    @media (max-width: 850px) {
+        min-width: unset !important;
+    }
+
     h1 {
         font-size: 65px;
         color: var(--primary);
@@ -150,6 +154,10 @@ export const Item = styled.div`
     color: var(--tertiary);
     opacity: 0.3;
     cursor: pointer;
+
+    @media (max-width: 850px) {
+        font-size: 15px;
+    }
 
     ${props => props.active && css`        
         opacity: 1;

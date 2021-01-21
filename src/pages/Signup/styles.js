@@ -95,6 +95,11 @@ export const Description = styled.div`
     }
 `;
 
+export const FormSection = styled.div`
+    width: 90%;
+    margin: 20px auto;
+`;
+
 export const Input = styled.input`
     border: none;
     background-color: transparent;

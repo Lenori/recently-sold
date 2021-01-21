@@ -25,7 +25,9 @@ export const Logo = styled.img`
     }
 
     @media (max-width: 850px) {
-        left: 20px;
+        max-width: 100%;
+        left: 0;
+        top: 80px;
     }
 `;
 
@@ -123,6 +125,10 @@ export const MenuIcon = styled.p`
             ${props => props.alwaysWhite && css`        
                 color: var(--tertiary);
             `} 
+        }
+
+        @media (max-width: 850px) {
+            left: 20px !important;
         }
     }
 `;

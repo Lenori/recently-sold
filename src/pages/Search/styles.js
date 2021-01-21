@@ -65,6 +65,15 @@ export const DateInput = styled.section`
         text-align: center;
         margin-right: 10px;
     }
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        p {
+            margin: 10px 0;
+        }
+    }
 `;
 
 export const Range = styled.section`
@@ -80,6 +89,14 @@ export const Range = styled.section`
         user-select: none;
     }
 
+    @media (max-width: 630px) {
+        width: 100%;
+        
+        p {
+            margin-bottom: 10px;
+        }
+    }
+
     section {
         display: flex;
         justify-content: space-between;
@@ -88,6 +105,7 @@ export const Range = styled.section`
         @media (max-width: 630px) {
             flex-direction: column;
             align-items: flex-start;
+            width: 100%;
         }
     }
 
@@ -122,7 +140,7 @@ export const Range = styled.section`
         margin-right: 10px;
 
         @media (max-width: 630px) {
-            width: 420px;
+            width: 100%;
         }
     }
 

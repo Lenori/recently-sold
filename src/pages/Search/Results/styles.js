@@ -25,6 +25,10 @@ export const Content = styled.div`
         width: 100%;
         text-align: center;
         margin-top: 40px;
+
+        @media (max-width: 850px) {
+            font-size: 9px;
+        }
     }
 
     th {
@@ -47,6 +51,10 @@ export const Content = styled.div`
 
     tr:nth-child(odd) {
         background-color: #ca2042;
+    }
+
+    @media (max-width: 850px) {
+        padding: 40px 20px !important;
     }
 `;
 
@@ -152,6 +160,10 @@ export const Items = styled.div`
 
         @media (max-width: 1150px) {
             width: 49%;
+        }
+
+        @media (max-width: 850px) {
+            width: 100%;
         }
     }
 `;

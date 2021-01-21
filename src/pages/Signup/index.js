@@ -6,7 +6,7 @@ import Highlight from '../../components/Highlight';
 
 import logo from '../../assets/logo-color.png';
 
-import {Content, Half, Logo, Title, Description, Input, Actions} from './styles';
+import {Content, Half, Logo, Title, Description, Input, Actions, FormSection} from './styles';
 
 class Signup extends Component {
     constructor() {
@@ -32,15 +32,17 @@ class Signup extends Component {
                 </Half>
 
                 <Half>
-                    <Input value={this.state.name} onChange={(e) => this.setState({name: e.target.value})} type="text" placeholder="Full name" />
-                    <Input value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} type="text" placeholder="E-mail" />
-                    <Input value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} type="password" placeholder="Password" />
-                    <Input value={this.state.confirmPassword} onChange={(e) => this.setState({confirmPassword: e.target.value})} type="password" placeholder="Confirm password" />
+                    <FormSection>
+                        <Input value={this.state.name} onChange={(e) => this.setState({name: e.target.value})} type="text" placeholder="Full name" />
+                        <Input value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} type="text" placeholder="E-mail" />
+                        <Input value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} type="password" placeholder="Password" />
+                        <Input value={this.state.confirmPassword} onChange={(e) => this.setState({confirmPassword: e.target.value})} type="password" placeholder="Confirm password" />
 
-                    <Actions>
-                        <Link to='/register'><p>Don’t have an account? Create one!</p></Link>
-                        <button>Login</button>
-                    </Actions>
+                        <Actions>
+                            <Link to='/register'><p>Don’t have an account? Create one!</p></Link>
+                            <button>Login</button>
+                        </Actions>
+                    </FormSection>
                 </Half>            
             
                 <Highlight />

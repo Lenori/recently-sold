@@ -70,6 +70,12 @@ export const Items = styled.div`
         width: 49%;
         color: var(--secondary);
     }
+
+    @media (max-width: 850px) {
+        a {
+            width: 100% !important;
+        }
+    }
 `;
 
 export const Item = styled.div`

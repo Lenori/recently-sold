@@ -40,7 +40,7 @@ export const Item = styled.div`
     border-radius: 10px;
 
     @media (max-width: 1150px) {
-        width: 35%;
+        width: 90%;
         margin-bottom: 40px;
     }
 

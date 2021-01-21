@@ -107,6 +107,7 @@ export const Items = styled.div`
     @media (max-width: 1150px) {
         width: 80%;
         margin: 0 auto;
+        height: auto;
     }
 `;
 
@@ -132,13 +133,14 @@ export const Item = styled.div`
 
     @media (max-width: 715px) {
         width: 100%;
-        flex-direction: row;
-        text-align: left;
+        flex-direction: column;
+        text-align: center;
         align-items: center;
         justify-content: start;
+        margin: 20px 0;
 
         img {
-            margin-right: 20px;
+            margin-right: none !important;
         }
     }
 
@@ -171,7 +173,9 @@ export const Actions = styled.div`
 
     @media (max-width: 1150px) {
         width: 90%;
-        margin: 90px auto 0;
+        margin: 60px auto 0;
+        align-items: center;
+        justify-content: center;
     }
 
     button {
